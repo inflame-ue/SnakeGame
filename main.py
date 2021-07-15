@@ -45,11 +45,14 @@ while game_is_on:
     snake.move_the_snake()  # snake method.
 
     # Detect collision with food:
-
     if snake.list_of_snakes[0].distance(food) < 15:
         score.track_score()
         food.refresh()
 
+    # Detect collision with wall:
+    if snake.list_of_snakes[0].xcor() > 280 or snake.list_of_snakes[0].xcor() < -280 or snake.list_of_snakes[0].ycor() > 280 or snake.list_of_snakes[0].ycor() < -280:
+        game_is_on = False
+        score.game_over()
 
 # Exit on click:
 screen.exitonclick()
