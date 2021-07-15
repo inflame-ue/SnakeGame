@@ -11,25 +11,29 @@ class Snake:
     # Initialize(create a snake):
     def __init__(self):
         self.list_of_snakes = []
-        self.xcor = 0.0
-        self.new_position = 0
         self.create_snake()
 
     def create_snake(self):
-        for number in range(0, 3):
-            snake = turtle.Turtle("square")
-            snake.color("white")
-            snake.penup()
-            snake.setx(self.xcor)
-            self.xcor -= 20
-            self.list_of_snakes.append(snake)
+        for position in constants.STARTING_POSITIONS:
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        snake = turtle.Turtle("square")
+        snake.color("white")
+        snake.penup()
+        snake.goto(position)
+        self.list_of_snakes.append(snake)
+
+    # Add new segments to the snake:
+    def extend(self):
+        self.add_segment(self.list_of_snakes[-1].position())
 
     # Move the snake:
     def move_the_snake(self):
 
         for number in range(len(self.list_of_snakes) - 1, 0, -1):
-            self.new_position = self.list_of_snakes[number - 1].position()
-            self.list_of_snakes[number].goto(self.new_position)
+            new_position = self.list_of_snakes[number - 1].position()
+            self.list_of_snakes[number].goto(new_position)
 
         self.list_of_snakes[0].fd(constants.MOVE_SPEED)
 

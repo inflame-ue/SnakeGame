@@ -48,6 +48,7 @@ while game_is_on:
     if snake.list_of_snakes[0].distance(food) < 15:
         score.track_score()
         food.refresh()
+        snake.extend()
 
     # Detect collision with wall:
     if snake.list_of_snakes[0].xcor() > 280 or snake.list_of_snakes[0].xcor() < -280 or snake.list_of_snakes[0].ycor() > 280 or snake.list_of_snakes[0].ycor() < -280:
