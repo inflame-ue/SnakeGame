@@ -20,10 +20,12 @@ class ScoreBoard(turtle.Turtle):
         self.write(f"Score: {self.score}", False, align="center", font=("Comic Sans MS", 15, "normal"))
 
     def track_score(self):
+        """Tracks score and writes it on the screen."""
         self.score += 1
         self.clear()
         self.scoreboard()
 
     def game_over(self):
+        """Writes on the screen game over."""
         self.setposition(0, 0)
         self.write("GAME OVER", False, align="center", font=("Comic Sans MS", 15, "normal"))

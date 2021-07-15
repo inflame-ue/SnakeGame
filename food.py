@@ -10,7 +10,7 @@ class Food(turtle.Turtle):
 
     def __init__(self):
         super().__init__()
-        self.shape("circle")
+        self.shape("turtle")
         self.penup()
         self.shapesize(stretch_len=0.5, stretch_wid=0.5)
         self.color("red")
@@ -19,6 +19,7 @@ class Food(turtle.Turtle):
 
     # New random position of the food:
     def refresh(self):
+        """Moves food to the next random position on the screen."""
         x = random.choice(range(-280, 280, 20))
         y = random.choice(range(-280, 280, 20))
         self.goto(x, y)
