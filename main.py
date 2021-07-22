@@ -56,15 +56,14 @@ def main():  # Main body of the program
         # Detect collision with wall:
         if snake.list_of_snakes[0].xcor() > 290 or snake.list_of_snakes[0].xcor() < -290 or \
                 snake.list_of_snakes[0].ycor() > 290 or snake.list_of_snakes[0].ycor() < -290:
-            game_is_on = False
-            score.game_over()
+            score.reset()
+            snake.reset()
 
         # Detect collision with tail:
         for segment in snake.list_of_snakes[1:]:
             if snake.list_of_snakes[0].distance(segment) < 10:
-                game_is_on = False
-                score.game_over()
-
+                score.reset()
+                snake.reset()
 
 # Exit on click:
 main()

@@ -40,6 +40,12 @@ class Snake:
 
         self.list_of_snakes[0].fd(constants.MOVE_SPEED)
 
+    def reset(self):
+        for segment in self.list_of_snakes:
+            segment.goto(1000, 1000)
+        self.list_of_snakes.clear()
+        self.create_snake()
+
     def up(self):
         """Sets heading to up."""
         if self.list_of_snakes[0].heading() != constants.HEADINGS[3]:
